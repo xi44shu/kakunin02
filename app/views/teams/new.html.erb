@@ -1,0 +1,5 @@
+
+<%= form_with model: @team, url:teams_path, local: true do |f| %>
+<%= f.text_field :team_name, placeholder:"班名（いろはにほへと)", maxlength:"40" %>
+<%= f.submit "登録する" %>
+<% end %>
