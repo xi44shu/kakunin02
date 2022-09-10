@@ -58,11 +58,11 @@ class SchedulesController < ApplicationController
       elsif plan.scheduled_date == @todays_date + x && plan.team_id ==1 &&plan.time_zone_id ==3
         a_pm_plans.push(plan.scheduled_date,plan.team_id,plan.time_zone_id)
       elsif plan.scheduled_date == @todays_date + x && plan.team_id ==2 &&plan.time_zone_id ==2
-        b_pm_plans.push(plan.scheduled_date,plan.team_id,plan.time_zone_id)
+        b_am_plans.push(plan.scheduled_date,plan.team_id,plan.time_zone_id)
       elsif plan.scheduled_date == @todays_date + x && plan.team_id ==2 &&plan.time_zone_id ==3
         b_pm_plans.push(plan.scheduled_date,plan.team_id,plan.time_zone_id)
       elsif plan.scheduled_date == @todays_date + x && plan.team_id ==3 &&plan.time_zone_id ==2
-        c_pm_plans.push(plan.scheduled_date,plan.team_id,plan.time_zone_id)
+        c_am_plans.push(plan.scheduled_date,plan.team_id,plan.time_zone_id)
       elsif plan.scheduled_date == @todays_date + x && plan.team_id ==3 &&plan.time_zone_id ==3
         c_pm_plans.push(plan.scheduled_date,plan.team_id,plan.time_zone_id)
       end
