@@ -33,7 +33,9 @@ class SchedulesController < ApplicationController
     @todays_date = Date.today
     # 例)　今日が2月1日の場合・・・ Date.today.day => 1日
 
-    @week_days = []
+    @a_week_days = []
+    @b_week_days = []
+    @c_week_days = []
 
     plans = Schedule.where(scheduled_date: @todays_date..@todays_date + 6)
 
@@ -44,17 +46,39 @@ class SchedulesController < ApplicationController
     # end
 
     a_am_plans = []
+    a_pm_plans = []
+    b_am_plans = []
+    b_pm_plans = []
+    c_am_plans = []
+    c_pm_plans = []
+
     plans.each do |plan|
-      a_am_plans.push(plan.scheduled_date,plan.team_id) if plan.scheduled_date == @todays_date + x && plan.team_id ==1 &&plan.time_zone_id ==2
-  end
+      if plan.scheduled_date == @todays_date + x && plan.team_id ==1 &&plan.time_zone_id ==2
+        a_am_plans.push(plan.scheduled_date,plan.team_id,plan.id)
+      elsif plan.scheduled_date == @todays_date + x && plan.team_id ==1 &&plan.time_zone_id ==3
+        a_pm_plans.push(plan.scheduled_date,plan.team_id,plan.id)
+      elsif plan.scheduled_date == @todays_date + x && plan.team_id ==2 &&plan.time_zone_id ==2
+        b_am_plans.push(plan.scheduled_date,plan.team_id,plan.id)
+      elsif plan.scheduled_date == @todays_date + x && plan.team_id ==2 &&plan.time_zone_id ==3
+        b_pm_plans.push(plan.scheduled_date,plan.team_id,plan.id)
+      elsif plan.scheduled_date == @todays_date + x && plan.team_id ==3 &&plan.time_zone_id ==2
+        c_am_plans.push(plan.scheduled_date,plan.team_id,plan.id)
+      elsif plan.scheduled_date == @todays_date + x && plan.team_id ==3 &&plan.time_zone_id ==3
+        c_pm_plans.push(plan.scheduled_date,plan.team_id,plan.id)
+      end
+    end
 
       wday_num = Date.today.wday + x
       if  wday_num >= 7
         wday_num = wday_num -7
       end
-      days = { month: (@todays_date + x).month, date: (@todays_date + x).day, plans:  a_am_plans, wday:  wdays[wday_num]}
+      a_days = { month: (@todays_date + x).month, date: (@todays_date + x).day, am_plans:  a_am_plans, pm_plans:  a_pm_plans, wday:  wdays[wday_num]}
+      b_days = { month: (@todays_date + x).month, date: (@todays_date + x).day, am_plans:  b_am_plans, pm_plans:  b_pm_plans, wday:  wdays[wday_num]}
+      c_days = { month: (@todays_date + x).month, date: (@todays_date + x).day, am_plans:  c_am_plans, pm_plans:  c_pm_plans, wday:  wdays[wday_num]}
 
-      @week_days.push(days)
+      @a_week_days.push(a_days)
+      @b_week_days.push(b_days)
+      @c_week_days.push(c_days)
     end
   end
 

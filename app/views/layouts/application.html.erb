@@ -17,6 +17,7 @@
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
           <%= link_to "新規予約", new_schedule_path, class: :nav__btn %>
           <%= link_to "新規班作成", new_team_path, class: :nav__btn %>
+          <%= link_to "トップページ", root_path, class: :nav__btn %>
         </div> 
         <% else %>
         <div class="nav__right">
