@@ -14,15 +14,22 @@
 
 <!-- 一覧表 -->
 
+<div class='calendar'>
+  <% @a_week_days.each do |day| %>
+    <div class='item'>
+      <div class='date'>
+        <%= day[:month] %>/<%= day[:date] %><%= day[:wday] %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
   <div class='calendar'>
-    <% @week_days.each do |day| %>
+    <% @a_week_days.each do |day| %>
       <div class='item'>
-        <div class='date'>
-          <%= day[:month] %>/<%= day[:date] %><%= day[:wday] %>
-        </div>
         <ul class='content'>
-        <% if day[:plans].length != 0 %>
-          <% day[:plans].each do |plan| %>
+        <% if day[:am_plans].length != 0 %>
+          <% day[:am_plans].each do |plan| %>
             <li class='plan-list'>・<%= plan %></li>
             <% end %>
         <% end %>
@@ -32,14 +39,11 @@
   </div>
 
   <div class='calendar'>
-    <% @week_days.each do |day| %>
+    <% @a_week_days.each do |day| %>
       <div class='item'>
-        <div class='date'>
-          <%= day[:month] %>/<%= day[:date] %><%= day[:wday] %>
-        </div>
         <ul class='content'>
-        <% if day[:plans].length != 0 %>
-          <% day[:plans].each do |plan| %>
+        <% if day[:pm_plans].length != 0 %>
+          <% day[:pm_plans].each do |plan| %>
             <li class='plan-list'>・<%= plan %></li>
             <% end %>
         <% end %>
@@ -67,7 +71,7 @@
     </div>
     <div class='body-y'>
       <!-- 曜日別に７回繰り返し表示するので繰り返したい内容を記述 -->
-      <% @week_days.each do |day| %>
+      <% @a_week_days.each do |day| %>
         <div class='wday-y'> <%#header-yと同等クラス このブロックを7回繰り返す%> 
           <div class='hiniti-y'> <%#日にちと曜日を表示%>
             <%= day[:month] %>/<%= day[:date] %><%= day[:wday] %>
