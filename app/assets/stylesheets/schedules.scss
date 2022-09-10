@@ -19,16 +19,40 @@ body {
   flex-wrap: wrap;
 }
 
+.day-title {
+  margin: 0.5vw;
+  border: medium solid rgb(0, 0, 0);
+  width: 5vw;
+  height: 40px;
+  background-color: rgb(246, 253, 255);
+}
+
+.team-title {
+  margin: 0.5vw;
+  border: medium solid rgb(0, 0, 0);
+  width: 12vw;
+  height: 40px;
+  background-color: rgb(246, 253, 255);
+}
+
 .item {
   margin: 0.5vw;
   border: medium solid rgb(0, 0, 0);
   width: 12vw;
-  height: auto;
+  height: 100px;
+  background-color: rgb(246, 253, 255);
+}
+
+.day-item {
+  margin: 0.5vw;
+  border: medium solid rgb(0, 0, 0);
+  width: 5vw;
+  height: 100px;
   background-color: rgb(246, 253, 255);
 }
 
 .date {
-  height: 5vh;
+  height: 100%;
   display: flex;
   font-size: 3vh;
   align-items: center;
@@ -44,7 +68,7 @@ body {
 }
 
 .plan-list {
-  margin: 1vh 0;
+  font-size: 2vh;
 }
 
 .form {

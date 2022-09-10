@@ -13,18 +13,26 @@
 <% end %>
 
 <!-- 一覧表 -->
+<div class='calendars'>
 
 <div class='calendar'>
+  <div class='day-title'>
+    日にち\班
+  </div>
   <% @a_week_days.each do |day| %>
-    <div class='item'>
+    <div class='day-item'>
       <div class='date'>
-        <%= day[:month] %>/<%= day[:date] %><%= day[:wday] %>
+        <%= day[:month] %>/<%= day[:date] %><br><%= day[:wday] %>
       </div>
     </div>
   <% end %>
 </div>
 
   <div class='calendar'>
+    <div class='team-title'>
+      い班
+    </div>
+  
     <% @a_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
@@ -39,6 +47,9 @@
   </div>
 
   <div class='calendar'>
+    <div class='team-title'>
+      い班
+    </div>
     <% @a_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
@@ -51,6 +62,7 @@
       </div>
     <% end %>
   </div>
+</div>
 
 
   <div class='itirann-y'>
