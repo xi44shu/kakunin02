@@ -1,0 +1,48 @@
+  <div class='itirann-y'>
+    <div class='header-y'>
+      <div class='hyouki-y'>日\班
+      </div>
+      <div class='daynight-y'>
+        <div class='daytime-y'>
+          <% @team.each do |n| %> 
+            <div class='ti-mumei-y'>
+              <%= n.team_name %>
+            </div>
+            <%end%>
+          </div>
+        <div class='nighttime-y'>夜間工事
+        </div>
+      </div>
+    </div>
+    <div class='body-y'>
+      <!-- 曜日別に７回繰り返し表示するので繰り返したい内容を記述 -->
+      <% @a_week_days.each do |day| %>
+        <div class='wday-y'> <%#header-yと同等クラス このブロックを7回繰り返す%> 
+          <div class='hiniti-y'> <%#日にちと曜日を表示%>
+            <%= day[:month] %>/<%= day[:date] %><%= day[:wday] %>
+          </div>
+          <div class='daynight-y'>
+            <div class='daytime-y'>
+              <div class='itiniti-y'> <%#３班分繰り返す、変数を使ってteam_idを変更する%>
+                <div class='gozen'>もし、schedule_dateがclass=='hiniti-y'の日にちと一致して、team_id==1のtime_zone_id==2があれば表示し、なければ何もない</div>
+                <div class='gogo'>もし、schedule_dateがclass=='hiniti-y'の日にちと一致して、team_id==1のtime_zone_id==3があれば表示し、なければ何もない</div>
+              </div>
+              <div class='itiniti-y'>
+                <div class='gozen'>もし、schedule_dateがclass=='hiniti-y'の日にちと一致して、team_id==2のtime_zone_id==2があれば表示し、なければ何もない</div>
+                <div class='gogo'>もし、schedule_dateがclass=='hiniti-y'の日にちと一致して、team_id==2のtime_zone_id==3があれば表示し、なければ何もない</div>
+              </div>
+              <div class='itiniti-y'>
+                <div class='gozen'>もし、schedule_dateがclass=='hiniti-y'の日にちと一致して、team_id==3のtime_zone_id==2があれば表示し、なければ何もない</div>
+                <div class='gogo'>もし、schedule_dateがclass=='hiniti-y'の日にちと一致して、team_id==3のtime_zone_id==3があれば表示し、なければ何もない</div>
+              </div>
+            </div>
+            <div class='nighttime-y'>夜間工事工事があったらeachで取得表示
+                <div class='yo-i'>もし、schedule_dateがclass=='hiniti-y'の日にちと一致して、team_id==1のtime_zone_id==4があれば表示し、なければ何もない</div>
+                <div class='yo-ro'>もし、schedule_dateがclass=='hiniti-y'の日にちと一致して、team_id==2のtime_zone_id==4があれば表示し、なければ何もない</div>
+                <div class='yo-ha'>もし、schedule_dateがclass=='hiniti-y'の日にちと一致して、team_id==3のtime_zone_id==4があれば表示し、なければ何もない</div>
+            </div>
+          </div>  
+        </div>
+      <%end%>
+    </div>
+  </div>
