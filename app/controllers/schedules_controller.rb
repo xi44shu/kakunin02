@@ -45,7 +45,7 @@ class SchedulesController < ApplicationController
 
     a_am_plans = []
     plans.each do |plan|
-      a_am_plans.push(plan.time_zone_id) if plan.scheduled_date == @todays_date + x && plan.team_id ==1 &&plan.time_zone_id ==2
+      a_am_plans.push(plan.scheduled_date,plan.team_id) if plan.scheduled_date == @todays_date + x && plan.team_id ==1 &&plan.time_zone_id ==2
   end
 
       wday_num = Date.today.wday + x
