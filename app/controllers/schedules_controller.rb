@@ -2,6 +2,9 @@ class SchedulesController < ApplicationController
 
   def index
     @schedule = Schedule.all
+    @schedule_a = Schedule.where(team_id: 1)
+    @schedule_b = Schedule.where(team_id: 2)
+    @schedule_c = Schedule.where(team_id: 3)
     @team = Team.all
     get_week
 
@@ -22,6 +25,19 @@ class SchedulesController < ApplicationController
 
   def show
     @schedule = Schedule.find(params[:id])
+  end
+
+  def edit
+    @schedule = Schedule.find(params[:id])
+  end
+
+  def update
+    @schedule = Schedule.find(params[:id])
+    if @schedule.update(schedule_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -77,8 +93,8 @@ class SchedulesController < ApplicationController
         wday_num = wday_num -7
       end
       a_days = { scheduled_date:(@todays_date + x), month: (@todays_date + x).month, date: (@todays_date + x).day, am_plans:  a_am_plans, pm_plans:  a_pm_plans, wday:  wdays[wday_num]}
-      b_days = { month: (@todays_date + x).month, date: (@todays_date + x).day, am_plans:  b_am_plans, pm_plans:  b_pm_plans, wday:  wdays[wday_num]}
-      c_days = { month: (@todays_date + x).month, date: (@todays_date + x).day, am_plans:  c_am_plans, pm_plans:  c_pm_plans, wday:  wdays[wday_num]}
+      b_days = { scheduled_date:(@todays_date + x), month: (@todays_date + x).month, date: (@todays_date + x).day, am_plans:  b_am_plans, pm_plans:  b_pm_plans, wday:  wdays[wday_num]}
+      c_days = { scheduled_date:(@todays_date + x), month: (@todays_date + x).month, date: (@todays_date + x).day, am_plans:  c_am_plans, pm_plans:  c_pm_plans, wday:  wdays[wday_num]}
 
       @a_week_days.push(a_days)
       @b_week_days.push(b_days)
