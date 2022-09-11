@@ -30,6 +30,11 @@
     <% @a_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
+          <% @schedule_a.each do |sa| %>
+          <% if day[:scheduled_date] == sa.scheduled_date && sa.time_zone_id == 2%>
+          <%= link_to sa.id, schedule_path(sa.id), class: :nav__btn %>
+          <%end%>
+          <%end%>
         <% if day[:am_plans].length != 0 %>
           <% day[:am_plans].each do |plan| %>
             <li class='plan-list'>・<%= plan %></li>
@@ -46,6 +51,11 @@
     <% @a_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
+          <% @schedule_a.each do |sa| %>
+          <% if day[:scheduled_date] == sa.scheduled_date && sa.time_zone_id == 3%>
+          <%= link_to sa.id, schedule_path(sa.id), class: :nav__btn %>
+          <%end%>
+          <%end%>
         <% if day[:pm_plans].length != 0 %>
           <% day[:pm_plans].each do |plan| %>
             <li class='plan-list'>・<%= plan %></li>
@@ -62,6 +72,11 @@
     <% @b_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
+          <% @schedule_b.each do |sb| %>
+          <% if day[:scheduled_date] == sb.scheduled_date && sb.time_zone_id == 2%>
+          <%= link_to sb.id, schedule_path(sb.id), class: :nav__btn %>
+          <%end%>
+          <%end%>
         <% if day[:am_plans].length != 0 %>
           <% day[:am_plans].each do |plan| %>
             <li class='plan-list'>・<%= plan %></li>
@@ -78,6 +93,11 @@
     <% @b_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
+          <% @schedule_b.each do |sb| %>
+          <% if day[:scheduled_date] == sb.scheduled_date && sb.time_zone_id == 3%>
+          <%= link_to sb.id, schedule_path(sb.id), class: :nav__btn %>
+          <%end%>
+          <%end%>
         <% if day[:pm_plans].length != 0 %>
           <% day[:pm_plans].each do |plan| %>
             <li class='plan-list'>・<%= plan %></li>
@@ -94,6 +114,11 @@
     <% @c_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
+          <% @schedule_c.each do |sc| %>
+          <% if day[:scheduled_date] == sc.scheduled_date && sc.time_zone_id == 2%>
+          <%= link_to sc.id, schedule_path(sc.id), class: :nav__btn %>
+          <%end%>
+          <%end%>
         <% if day[:am_plans].length != 0 %>
           <% day[:am_plans].each do |plan| %>
             <li class='plan-list'>・<%= plan %></li>
@@ -110,6 +135,11 @@
     <% @c_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
+          <% @schedule_c.each do |sc| %>
+          <% if day[:scheduled_date] == sc.scheduled_date && sc.time_zone_id == 3%>
+          <%= link_to sc.id, schedule_path(sc.id), class: :nav__btn %>
+          <%end%>
+          <%end%>
         <% if day[:pm_plans].length != 0 %>
           <% day[:pm_plans].each do |plan| %>
             <li class='plan-list'>・<%= plan %></li>
