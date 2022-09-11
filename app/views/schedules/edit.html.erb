@@ -1,3 +1,4 @@
+<div class="schedule_edit">予約を変更する</div>
 <%= form_with model: @schedule, url: schedule_path, method: :put, local: true do |f| %>
 <%= f.label :日付を選択, class: 'lavel' %>
 <%= f.date_field :scheduled_date, class: 'date-select' %>
@@ -7,4 +8,17 @@
 <%= f.collection_select(:time_zone_id, TimeZone.all, :id, :name, {}, {class:"time_zone-select"}) %>
 
 <%= f.submit "予約を変更する" %>
+<% end %>
+
+
+<div class="schedule_copy_create">新規予約する</div>
+<%= form_with model: @schedule, url: schedules_path, method: :post, local: true do |f| %>
+<%= f.label :日付を選択, class: 'lavel' %>
+<%= f.date_field :scheduled_date, class: 'date-select' %>
+<%= f.label :施工班を選択, class: 'lavel' %>
+<%= f.collection_select(:team_id, Team.all, :id, :team_name, {}, {class:"team-select"}) %>
+<%= f.label :時間帯を選択, class: 'lavel' %>
+<%= f.collection_select(:time_zone_id, TimeZone.all, :id, :name, {}, {class:"time_zone-select"}) %>
+
+<%= f.submit "予約する" %>
 <% end %>

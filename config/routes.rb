@@ -3,5 +3,4 @@ Rails.application.routes.draw do
   root to: 'schedules#index'
   resources :teams
   resources :schedules
-  
 end
