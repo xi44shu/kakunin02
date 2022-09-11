@@ -36,7 +36,7 @@
         <div class='content'>
           <% @schedule_a.each do |sa| %>
           <% if day[:scheduled_date] == sa.scheduled_date && sa.time_zone_id == 2%>
-          <%= link_to "詳細", schedule_path(sa.id), class: :nav__btn %>
+          <%= link_to "予約詳細", schedule_path(sa.id), class: :nav__btn %>
           <div><%= sa.scheduled_date%></div>
           <div><%= sa.time_zone_id%></div>
           <div><%= sa.team.team_name%></div>
