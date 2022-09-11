@@ -2,3 +2,6 @@
 <%= @schedule.time_zone_id %>
 <%= @schedule.team.team_name %>
 <%= link_to "予約を変更", edit_schedule_path(@schedule.id), class: :nav__btn %>
+
+
+<%= link_to "削除", schedule_path(@schedule.id), method: :delete,  class: :nav__btn  %>
