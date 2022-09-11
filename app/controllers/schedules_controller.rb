@@ -63,9 +63,9 @@ class SchedulesController < ApplicationController
     @b_week_days = []
     @c_week_days = []
 
-    plans = Schedule.where(scheduled_date: @todays_date..@todays_date + 6)
+    plans = Schedule.where(scheduled_date: @todays_date..@todays_date + 13)
 
-    7.times do |x|
+    14.times do |x|
     #   today_plans = []
     #   plans.each do |plan|
     #     today_plans.push(plan.time_zone_id) if plan.scheduled_date == @todays_date + x

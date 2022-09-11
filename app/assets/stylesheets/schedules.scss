@@ -5,14 +5,27 @@ body {
   background-color: rgb(114, 151, 161);
 }
 
+.calendersbox {
+  height: 80vh;
+  widthht: 3vh;
+}
+
+.calender_header {
+  display: flex;
+  margin-top: 3vh;
+}
+
+
 .calendars {
   display: flex;
+  overflow: scroll;
+  height: 70vh;
+  width: 90vw;
   // justify-content: space-between;
 }
 
 .calendar {
   // width: 100vw;
-  margin-top: 15vh;
   // display: flex;
   // align-items: center;
   // justify-content: center;

@@ -10,11 +10,18 @@
 <%= f.submit "登録する" %>
 <% end %>
 <!-- 一覧表 -->
+<div class='calendarsbox'>
+  <div class="calender_header">
+    <div class='day-title'>日にち\班</div>
+    <div class='team-title'>い班  午前枠</div>
+    <div class='team-title'>い班  午後枠</div>
+    <div class='team-title'>ろ班  午前枠</div>
+    <div class='team-title'>ろ班  午後枠</div>
+    <div class='team-title'>は班  午前枠</div>
+    <div class='team-title'>は班  午後枠</div>
+  </div>
 <div class='calendars'>
   <div class='calendar'>
-    <div class='day-title'>
-      日にち\班
-    </div>
     <% @a_week_days.each do |day| %>
       <div class='day-item'>
         <div class='date'>
@@ -24,30 +31,22 @@
     <% end %>
   </div>
   <div class='calendar'>
-    <div class='team-title'>
-      い班  午前枠
-    </div>
     <% @a_week_days.each do |day| %>
       <div class='item'>
-        <ul class='content'>
+        <div class='content'>
           <% @schedule_a.each do |sa| %>
           <% if day[:scheduled_date] == sa.scheduled_date && sa.time_zone_id == 2%>
-          <%= link_to sa.id, schedule_path(sa.id), class: :nav__btn %>
+          <%= link_to "詳細", schedule_path(sa.id), class: :nav__btn %>
+          <div><%= sa.scheduled_date%></div>
+          <div><%= sa.time_zone_id%></div>
+          <div><%= sa.team.team_name%></div>
           <%end%>
           <%end%>
-        <% if day[:am_plans].length != 0 %>
-          <% day[:am_plans].each do |plan| %>
-            <li class='plan-list'>・<%= plan %></li>
-            <% end %>
-        <% end %>
-        </ul>
+        </div>
       </div>
     <% end %>
   </div>
   <div class='calendar'>
-    <div class='team-title'>
-      い班  午後枠
-    </div>
     <% @a_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
@@ -66,9 +65,6 @@
     <% end %>
   </div>
   <div class='calendar'>
-    <div class='team-title'>
-      ろ班  午前枠
-    </div>
     <% @b_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
@@ -87,9 +83,6 @@
     <% end %>
   </div>
   <div class='calendar'>
-    <div class='team-title'>
-      ろ班  午後枠
-    </div>
     <% @b_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
@@ -108,9 +101,6 @@
     <% end %>
   </div>
   <div class='calendar'>
-    <div class='team-title'>
-      は班  午前枠
-    </div>
     <% @c_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
@@ -129,9 +119,6 @@
     <% end %>
   </div>
   <div class='calendar'>
-    <div class='team-title'>
-      は班  午後枠
-    </div>
     <% @c_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
@@ -149,5 +136,6 @@
       </div>
     <% end %>
   </div>
+</div>
 </div>
 
