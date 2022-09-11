@@ -20,6 +20,10 @@ class SchedulesController < ApplicationController
     end
   end
 
+  def show
+    @schedule = Schedule.find(params[:id])
+  end
+
   private
 
   def schedule_params
@@ -72,7 +76,7 @@ class SchedulesController < ApplicationController
       if  wday_num >= 7
         wday_num = wday_num -7
       end
-      a_days = { month: (@todays_date + x).month, date: (@todays_date + x).day, am_plans:  a_am_plans, pm_plans:  a_pm_plans, wday:  wdays[wday_num]}
+      a_days = { scheduled_date:(@todays_date + x), month: (@todays_date + x).month, date: (@todays_date + x).day, am_plans:  a_am_plans, pm_plans:  a_pm_plans, wday:  wdays[wday_num]}
       b_days = { month: (@todays_date + x).month, date: (@todays_date + x).day, am_plans:  b_am_plans, pm_plans:  b_pm_plans, wday:  wdays[wday_num]}
       c_days = { month: (@todays_date + x).month, date: (@todays_date + x).day, am_plans:  c_am_plans, pm_plans:  c_pm_plans, wday:  wdays[wday_num]}
 

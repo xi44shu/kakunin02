@@ -9,6 +9,13 @@
 <%= f.collection_select(:time_zone_id, TimeZone.all, :id, :name, {}, {class:"time_zone-select"}) %>
 <%= f.submit "登録する" %>
 <% end %>
+
+<%= form_with model: @schedule, url: schedules_path, method: :get, local: true do |f| %>
+<%= f.label :工事番号を入力, class: 'lavel' %>
+<%= f.text_field :id %>
+<%= f.submit "登録する" %>
+<% end %>
+
 <!-- 一覧表 -->
 <div class='calendars'>
   <div class='calendar'>
@@ -30,6 +37,8 @@
     <% @a_week_days.each do |day| %>
       <div class='item'>
         <ul class='content'>
+          <%= day[:scheduled_date]%>
+          <%= day[:num]%>
         <% if day[:am_plans].length != 0 %>
           <% day[:am_plans].each do |plan| %>
             <li class='plan-list'>・<%= plan %></li>
