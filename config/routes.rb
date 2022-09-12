@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   resources :trading_companies
   resources :public_utilities
   resources :details
-  resources :showschedules
 end
