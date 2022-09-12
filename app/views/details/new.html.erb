@@ -1,8 +1,0 @@
-<%= form_with model: @detail, url: details_path, local: true do |f| %>
-<%= f.label :種類を選択, class: 'lavel' %>
-<%= f.collection_select(:pipe_type_id, PipeType.all, :id, :name, {}, {class:"pipe_type-select"}) %>
-<%= f.label :大きさを選択, class: 'lavel' %>
-<%= f.collection_select(:pipe_size_id, PipeSize.all, :id, :name, {}, {class:"pipe_size_id-select"}) %>
-
-<%= f.submit "登録する" %>
-<% end %>
