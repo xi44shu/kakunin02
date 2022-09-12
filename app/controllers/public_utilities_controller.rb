@@ -3,12 +3,12 @@ class PublicUtilitiesController < ApplicationController
   end
 
   def new
-    @publicutilities = PublicUtilities.new
+    @publicutility = PublicUtility.new
   end
 
   def create
-    @publicutilities = PublicUtilities.new(publicutilities_params)
-    if @publicutilities.save
+    @publicutility = PublicUtility.new(publicutility_params)
+    if @publicutility.save
       redirect_to root_path
     else
       render :new
@@ -17,8 +17,8 @@ class PublicUtilitiesController < ApplicationController
 
   private
 
-  def publicutilities_params
-    params.require(:publicutilities).permit(:pu_name )
+  def publicutility_params
+    params.permit(:pu_name )
   end
 
 end

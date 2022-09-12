@@ -3,12 +3,12 @@ class TradingCompaniesController < ApplicationController
   end
 
   def new
-    @tradingCompanies = TradingCompanies.new
+    @tradingCompany = TradingCompany.new
   end
 
   def create
-    @tradingCompanies = TradingCompanies.new(tradingCompanies_params)
-    if @tradingCompanies.save
+    @tradingCompany = TradingCompany.new(tradingcompany_params)
+    if @tradingCompany.save
       redirect_to root_path
     else
       render :new
@@ -17,8 +17,8 @@ class TradingCompaniesController < ApplicationController
 
   private
 
-  def tradingCompanies_params
-    params.require(:tradingCompanies).permit(:tc_name, :tc_contact_person, :tc_telephone )
+  def tradingcompany_params
+    params.permit(:tc_name, :tc_contact_person, :tc_telephone )
   end
 
 end
