@@ -1,0 +1,6 @@
+<%= form_with model: @public_utility, url: public_utilities_path, local: true do |f| %>
+<%= f.label :事業体名を入力, class: 'lavel' %>
+<%= f.text_field :pu_name, class: 'pu_name-select' %>
+
+<%= f.submit "登録する" %>
+<% end %>
