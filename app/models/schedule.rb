@@ -3,6 +3,7 @@ class Schedule < ApplicationRecord
   belongs_to :time_zone
   belongs_to :user
   belongs_to :team
+  belongs_to :showschedules
 
   with_options presence: true do
     validates :time_zone_id, numericality: { other_than: 1 , message: "can't be blank"}
