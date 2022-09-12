@@ -1,4 +1,9 @@
 <p>Find me in app/views/schedules/index.html.erb</p>
+<% @users.each do |user| %>
+      <%= user.id %>
+      <% end %>
+<%= paginate @users %>
+
 <!-- 予約フォーム -->
 <%= form_with model: @schedule, url: schedules_path, local: true do |f| %>
 <%= f.label :日付を選択, class: 'lavel' %>
