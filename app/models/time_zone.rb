@@ -6,6 +6,6 @@ class TimeZone < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :scheduled_date
+  has_many :schedules
 
 end

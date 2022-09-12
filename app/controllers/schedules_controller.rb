@@ -17,7 +17,7 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     if @schedule.save
-      redirect_to root_path
+      redirect_to "/schedules/#{@schedule.id}"
     else
       render :new
     end
@@ -25,6 +25,8 @@ class SchedulesController < ApplicationController
 
   def show
     @schedule = Schedule.find(params[:id])
+    @showschedule = Showschedule.new
+    @showschedules = @schedule.showschedules.includes(:user)
   end
 
   def edit
