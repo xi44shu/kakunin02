@@ -1,3 +1,3 @@
 class TradingCompany < ApplicationRecord
-# has_many :showschedules
+ has_many :showschedules
 end

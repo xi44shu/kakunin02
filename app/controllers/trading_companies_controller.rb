@@ -3,12 +3,12 @@ class TradingCompaniesController < ApplicationController
   end
 
   def new
-    @tradingCompany = TradingCompany.new
+    @tradingcompany = TradingCompany.new
   end
 
   def create
-    @tradingCompany = TradingCompany.new(tradingcompany_params)
-    if @tradingCompany.save
+    @tradingcompany = TradingCompany.new(tradingcompany_params)
+    if @tradingcompany.save
       redirect_to root_path
     else
       render :new

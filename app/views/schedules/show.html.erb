@@ -6,3 +6,41 @@
 
 
 <%= link_to "削除", schedule_path(@schedule.id), method: :delete,  class: :nav__btn  %>
+
+
+<div class="container">
+  <% if user_signed_in? %>
+    <%= form_with(model: [@schedule, @showschedule], method: :post, local: true) do |f| %>
+      <%= f.label :開始時間を選択or入力, class: 'lavel' %>
+      <%= f.time_field :start_time, class: 'start_time-select' %>
+      <%= f.label :商社情報を選択, class: 'lavel' %>
+      <%= f.collection_select(:trading_company_id, TradingCompany.all, :id, :tc_name, {}, {class:"team-select"}) %>
+      <%= f.label :商社情報を選択, class: 'lavel' %>
+      <%= f.collection_select(:trading_company_id, TradingCompany.all, :id, :tc_contact_person, {}, {class:"team-select"}) %>
+      <%= f.label :商社情報を選択, class: 'lavel' %>
+      <%= f.collection_select(:trading_company_id, TradingCompany.all, :id, :tc_telephone, {}, {class:"team-select"}) %>
+      <%#= f.label :事業体を選択, class: 'lavel' %>
+      <%#= f.collection_select(:public_utility_id, PublicUtility.all, :id, :pu_name, {}, {class:"pu_name-select"}) %>
+      <%= f.label :注意事項を入力, class: 'lavel' %>
+      <%= f.text_field :content, class: 'content-select' %>
+      <%= f.submit "SEND" %>
+
+    <% end %>
+  <% else %>
+    <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+  <% end %>
+  <div class="showschedules">
+    <h4>＜コメント一覧＞</h4>
+    <% @showschedules.each do |showschedule| %>
+      <p>
+        <strong><%= link_to showschedule.user.email, "/users/#{showschedule.user_id}" %>：</strong>
+        <%= showschedule.start_time %>
+        <%= showschedule.trading_company.tc_name %>
+        <%#= showschedule.public_utility.pu_name %>
+        <%= showschedule.content %>
+
+      </p>
+    <% end %>
+  </div>
+</div>
+
