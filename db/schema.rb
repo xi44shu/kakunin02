@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_12_064434) do
+ActiveRecord::Schema.define(version: 2022_09_12_072945) do
 
   create_table "details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "pipe_type_id", null: false
@@ -34,6 +34,21 @@ ActiveRecord::Schema.define(version: 2022_09_12_064434) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["team_id"], name: "index_schedules_on_team_id"
     t.index ["user_id"], name: "index_schedules_on_user_id"
+  end
+
+  create_table "showschedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.time "start_time"
+    t.bigint "trading_company_id"
+    t.bigint "public_utility_id"
+    t.bigint "schedule_id", null: false
+    t.bigint "user_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["public_utility_id"], name: "index_showschedules_on_public_utility_id"
+    t.index ["schedule_id"], name: "index_showschedules_on_schedule_id"
+    t.index ["trading_company_id"], name: "index_showschedules_on_trading_company_id"
+    t.index ["user_id"], name: "index_showschedules_on_user_id"
   end
 
   create_table "teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,4 +80,8 @@ ActiveRecord::Schema.define(version: 2022_09_12_064434) do
 
   add_foreign_key "schedules", "teams"
   add_foreign_key "schedules", "users"
+  add_foreign_key "showschedules", "public_utilities"
+  add_foreign_key "showschedules", "schedules"
+  add_foreign_key "showschedules", "trading_companies"
+  add_foreign_key "showschedules", "users"
 end
